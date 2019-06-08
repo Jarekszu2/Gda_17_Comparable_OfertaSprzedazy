@@ -10,10 +10,23 @@ sortuj rosnaco (komenda nie listuje, tylko sortuje)
 sortuj malejaco (komenda nie listuje, tylko sortuje)
  */
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
+@Data
+@AllArgsConstructor
 
-public class OfertaSprzedazy {
+public class OfertaSprzedazy implements Comparable<OfertaSprzedazy>{
 
     private String nazwaProduktu;
     private double cenaProduktu;
+
+    public int compareTo(OfertaSprzedazy o) {
+        if (this.cenaProduktu > o.cenaProduktu) {
+            return -1;
+        } else if (this.cenaProduktu < o.cenaProduktu){
+            return 1;
+        }
+        return  o.nazwaProduktu.compareTo(this.nazwaProduktu);
+    }
 }
